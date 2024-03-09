@@ -1,0 +1,22 @@
+<section class="services-page">
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Trackon Courier: Delivering Excellence</h1>
+        <p>Committed to customer satisfaction and a variety of reliable courier services.</p>
+      </div>
+    </div>
+  
+    <h2 style="text-align: center;">Our Services</h2>
+    <div class="service-card-container">
+      <div class="service-card" *ngFor="let service of services">
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
+      </div>
+    </div>
+  
+    <div class="certifications">
+      <h3>ISO Certifications</h3>
+      <p>Trackon is an ISO 9001:2008 & ISO 14001:2004 certified company, demonstrating our commitment to quality and environmental responsibility.</p>
+    </div>
+  </section>
+  

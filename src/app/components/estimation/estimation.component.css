@@ -1,0 +1,80 @@
+.price-estimation-box {
+    background-color: #f5f5f5; 
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    padding: 3rem;
+    margin-bottom: 1rem; 
+  }
+  
+  .card-header {
+    display: flex;
+    align-items: center;
+    padding-bottom: 0.5rem; 
+    border-bottom: 1px solid #ddd; 
+  }
+  
+  .card-title {
+    margin-left: 0.5rem; 
+    font-weight: bold;
+  }
+  
+  .material-icons {
+    color: #3f51b5; 
+    font-size: 24px;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem; 
+  }
+  
+  .form-label {
+    display: block;
+    margin-bottom: 0.5rem; 
+    font-weight: bold;
+  }
+  
+  .form-control,
+  .form-select {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 1rem;
+  }
+  
+  .btn-primary {
+    background-color: #0077b1; 
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1rem; 
+  }
+  
+  .result {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem; 
+  }
+  
+  .label {
+    margin-right: 0.5rem; 
+    font-weight: bold;
+  }
+  
+  .value {
+    font-weight: bold;
+  }
+  
+  
+  
+  .price-estimation-box:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+  }
+  
+  .price-estimation-box {
+    background-image: url("/assets/images/supply-chain-representation-with-van-top-view.jpg");
+    background-position: center;
+  }
