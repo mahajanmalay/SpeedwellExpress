@@ -1,0 +1,38 @@
+<div class="price-estimation-box">
+  <div class="card-header">
+    <i class="material-icons">calculator</i> <span class="card-title">Price Estimation</span>
+  </div>
+  <div class="card-content">
+    <div class="form-group">
+      <label for="packageWeight" class="form-label">Package Weight:</label>
+      <input type="number" class="form-control" id="packageWeight" placeholder="Enter weight" [(ngModel)]="packageWeight">
+      <select class="form-select" [(ngModel)]="weightUnit">
+        <option value="g">Grams</option>
+        <option value="kg">Kilograms</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="destinationType" class="form-label">Destination Type:</label>
+      <select class="form-select" id="destinationType" [(ngModel)]="destinationType">
+        <option value="Pune&PCMC">Pune&PCMC</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Maharashtra">Maharashtra</option>
+        <option value="Out of Maharashtra">Out of Maharashtra</option>
+        <option value="North-East/J&K">North-East/J&K</option>
+      </select>
+    </div>
+    <div class="form-group" *ngIf="destinationType === 'Out of Maharashtra' || destinationType === 'North-East/J&K'">
+      <label for="transportMethod" class="form-label">Transport Method:</label>
+      <select class="form-select" id="transportMethod" [(ngModel)]="transportMethod">
+        <option value="byRoad">By Road</option>
+        <option value="byAir">By Air</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" (click)="estimatePrice()">Estimate Price</button>
+    <div class="result" *ngIf="estimatedPrice !== undefined">
+      <span class="label">Estimated Price:</span>
+      <span class="value">{{ getFormattedPrice() }}</span>
+    </div>
+    
+  </div>
+</div>
