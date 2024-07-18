@@ -1,0 +1,104 @@
+<div class="admin-dashboard">
+    
+    <!-- Header and Top Section -->
+    <div class="top-section">
+      <h2>Welcome Admin!</h2>
+      <!-- Logout Button -->
+        <button class="btn-danger logout-btn" (click)="logout()">Logout</button>
+      
+    </div>
+  
+    <button class="btn-primary" style="margin-bottom: 15px;" (click)="createTracking()">Create New Tracking</button>
+
+    <!-- Search Box -->
+    <div class="search-box">
+      <input type="text" placeholder="Search by Tracking Number" [(ngModel)]="searchText" />
+      <button class="btn-primary" (click)="searchTrackings()">Search</button>
+    </div>
+  
+    <!-- Form for Creating or Editing Tracking -->
+    <div *ngIf="isCreating || isEditing" class="form-container">
+      <form [formGroup]="trackingForm">
+        <div class="form-group">
+          <label class="form-label">
+            Tracking Number:
+            <input type="text" formControlName="trackingNumber" class="form-input"/>
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="form-label">
+            Status:
+            <select name="status" formControlName="status" class="form-input">
+              <option value="Booked At Speedwell Express">Booked At Speedwell Express</option>
+              <option value="Forwarded">Forwarded</option>
+              <option value="Arrived">Arrived</option>
+              <option value="Out For Delivery">Out For Delivery</option>
+              <option value="Delivered">Delivered</option>
+            </select>
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="form-label">
+            Location:
+            <input type="text" formControlName="location" class="form-input" />
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="form-label">
+            Estimated Delivery:
+            <input type="date" formControlName="estimatedDelivery" class="form-input" />
+          </label>
+        </div>
+  
+        <!-- Actions for Create/Edit -->
+        <div class="form-actions">
+          <button *ngIf="isCreating" class="btn-primary" (click)="saveTracking()">Save</button>
+          <button *ngIf="isEditing" class="btn-primary" (click)="updateTracking()">Update</button>
+          <button class="btn-secondary" (click)="cancel()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  
+    <!-- Table for Displaying Trackings -->
+    <div class="table-responsive">
+      <table *ngIf="trackings.length > 0" class="table">
+        <thead>
+          <tr>
+            <th>Tracking Number</th>
+            <th>Status</th>
+            <th>Location</th>
+            <th>Estimated Delivery</th>
+            <th>Last Updated</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tracking of pagedTrackings">
+            <td>{{ tracking.trackingNumber }}</td>
+            <td>{{ tracking.status }}</td>
+            <td>{{ tracking.location }}</td>
+            <td>{{ tracking.estimatedDelivery | date }}</td>
+            <td>{{ tracking.timestamp | date }}</td>
+            <td>
+              <button class="btn-primary" (click)="editTracking(tracking)">Edit</button>
+              <button class="btn-danger" (click)="deleteTracking(tracking.trackingNumber)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Pagination -->
+    <div class="pagination">
+      <button [disabled]="currentPage === 1" class="btn-primary" (click)="prevPage()">Previous</button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button [disabled]="currentPage === totalPages" class="btn-primary" (click)="nextPage()">Next</button>
+    </div>
+  
+    <!-- Message for No Trackings -->
+    <div *ngIf="trackings.length === 0" class="no-trackings">
+      <p>No trackings available.</p>
+    </div>
+  
+  </div>
+  

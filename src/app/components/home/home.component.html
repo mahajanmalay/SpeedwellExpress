@@ -1,24 +1,49 @@
 <header class="hero">
-    <div class="hero-content">
-      <h1>Delivering Your Packages Quickly and Safely</h1>
-      <p>Get your packages where they need to be, on time and on budget.</p>
-      <section class="tracking">
-        <h4>Track Your Package</h4>
-        <div class="tracking-input">
-            <input type="text" id="trackingNumber" placeholder="Enter Tracking Number">
-            <div *ngIf="trackingError" class="error">
-              Tracking number is required.
+  <div class="hero-content">
+    <h2>Delivering Your Packages Quickly and Safely</h2>
+    <p>Get your packages where they need to be, on time and on budget.</p>
+    <section class="tracking">
+      <h4>Track Your Package</h4>
+      <div class="tracking-input">
+        <input type="text" id="trackingNumber" placeholder="Enter Tracking Number" [(ngModel)]="trackingNumber">
+        <div *ngIf="trackingError" class="error">
+          Invalid tracking number. Please try again.
+        </div>
+        <button (click)="trackPackage()">Track</button>
+      </div>
+      <div class="tracking-details" *ngIf="trackingData">
+        <h2>Tracking Details</h2>
+        <div class="tracking-card">
+          <div class="tracking-info">
+            <div class="tracking-info-item">
+              <strong>Tracking Number: </strong>
+              <span>{{ trackingData.trackingNumber }}</span>
             </div>
-            <button (click)="trackPackage()">Track</button>
+            <div class="tracking-info-item">
+              <strong>Status: </strong>
+              <span>{{ trackingData.status }}</span>
+            </div>
+            <div class="tracking-info-item">
+              <strong>Current Location: </strong>
+              <span>{{ trackingData.location }}</span>
+            </div>
+            <div class="tracking-info-item">
+              <strong>Last Updated: </strong>
+              <span>{{ trackingData.timestamp }}</span>
+            </div>
+            <div class="tracking-info-item">
+              <strong>Estimated Delivery: </strong>
+              <span>{{ trackingData.estimatedDelivery }}</span>
+            </div>
           </div>
-          
-      </section>
-      <a href="#estimation" class="btn btn-primary">Get a Quote</a>
-    </div>
-  </header>
-  
-  <section id="estimation" class="estimation">
-    <h2>Get a Free Quote</h2>
-    <app-estimation></app-estimation>
-  </section>
-  
+        </div>
+      </div>
+    </section>
+    <a href="#estimation" class="btn btn-primary">Get a Quote</a>
+  </div>
+</header>
+
+<section id="estimation" class="estimation">
+  <h2>Get a Free Quote</h2>
+  <app-estimation></app-estimation>
+</section>

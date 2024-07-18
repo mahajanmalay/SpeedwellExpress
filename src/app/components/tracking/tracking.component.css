@@ -53,3 +53,14 @@
     color: #757575; 
   }
   
+  /* tracking.component.css */
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+.loading-indicator {
+  margin-top: 10px;
+  font-style: italic;
+}

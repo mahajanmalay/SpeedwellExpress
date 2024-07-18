@@ -1,5 +1,25 @@
-<h2>Track Your Package</h2>
-<div *ngIf="trackingData">
-  <h3>Delivery Status: {{ trackingData.status }}</h3>
-  <p>Estimated Delivery: {{ trackingData.estimatedDelivery }}</p>
+<div class="tracking-details">
+  <h2>Tracking Details</h2>
+  <div *ngIf="trackingData" class="tracking-card">
+    <div class="tracking-info">
+      <div class="tracking-info-item">
+        <strong>Tracking Number:</strong>
+        <span>{{ trackingData.trackingNumber }}</span>
+      </div>
+      <div class="tracking-info-item">
+        <strong>Status:</strong>
+        <span>{{ trackingData.status }}</span>
+      </div>
+      <div class="tracking-info-item">
+        <strong>Estimated Delivery:</strong>
+        <span>{{ trackingData.estimatedDelivery }}</span>
+      </div>
+      <div class="tracking-info-item">
+        <strong>Current Location:</strong>
+        <span>{{ trackingData.currentLocation }}</span>
+      </div>
+      <!-- Add more details as needed -->
+    </div>
+  </div>
+  <div *ngIf="!trackingData" class="loading">Loading tracking details...</div>
 </div>

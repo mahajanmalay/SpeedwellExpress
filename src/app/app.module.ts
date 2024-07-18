@@ -16,6 +16,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './components/login/login.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +31,9 @@ import { HttpClientModule } from '@angular/common/http';
     TrackingComponent,
     EstimationComponent,
     ServicesDetailsComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +43,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule, // Import the MatButtonModule
     FormsModule, 
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule,
+    MatOptionModule,
   ],
   providers: [
     provideClientHydration()

@@ -124,3 +124,10 @@ body {
 .tracking-input button:hover {
   background-color: #0077b1;
 }
+
+@media only screen and (max-width: 768px) {
+  .tracking-info-item{
+    background-color:#a5dde0;
+    
+  }
+}

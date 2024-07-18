@@ -1,27 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
 import { TrackingService } from '../../services/tracking.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tracking',
   templateUrl: './tracking.component.html',
-  styleUrl: './tracking.component.css'
+  styleUrls: ['./tracking.component.css'] // Make sure you have a CSS file for styling
 })
-export class TrackingComponent implements OnInit{
-  trackForm!: FormGroup;
+export class TrackingComponent {
+  trackingNumber: string = "";
   trackingData: any;
 
-  constructor(private fb: FormBuilder, private trackingService: TrackingService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private trackingService: TrackingService
+  ) { }
 
   ngOnInit() {
-    this.trackForm = this.fb.group({
-      trackingNumber: ['', Validators.required]
+    this.route.params.subscribe(params => {
+      this.trackingNumber = params['trackingNumber'];
+      if (this.trackingNumber) {
+        this.fetchTrackingData();
+      }
     });
   }
 
-  onSubmit() {
-    const trackingNumber = this.trackForm.value.trackingNumber;
-    this.trackingService.getTrackingData(trackingNumber)
-      .subscribe(data => this.trackingData = data);
+  fetchTrackingData() {
+    this.trackingService.getTrackingData(this.trackingNumber)
+      .subscribe(data => {
+        this.trackingData = data;
+      });
   }
 }
