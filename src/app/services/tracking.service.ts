@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TrackingService {
-  private apiUrl = 'http://localhost:5000/api/tracking';
+  private apiUrl = 'https://speedwellexpress-backend.onrender.com/api/tracking';
 
   constructor(private http: HttpClient) {}
 

@@ -14,11 +14,11 @@ export class EstimationComponent implements OnInit{
     estimatedPrice: number | undefined;
 
     prices: any = {
-      'Pune&PCMC': { byRoad: { base: 50, perKg: 60 } },
-      'Mumbai': { byRoad: { base: 60, perKg: 70 } },
-      'Maharashtra': { byRoad: { base: 80, perKg: 80 } },
-      'Out of Maharashtra': { byRoad: { base: 120, perKg: 90 }, byAir: { base: 160, perKg: 160 } },
-      'North-East/J&K': { byRoad: { base: 130, perKg: 120 }, byAir: { base: 180, perKg: 180 } },
+      'Pune&PCMC': { byRoad: { base: 70, perKg: 60 } },
+      'Mumbai': { byRoad: { base: 80, perKg: 60 } },
+      'Maharashtra': { byRoad: { base: 60, perKg: 70 } },
+      'Out of Maharashtra': { byRoad: { base: 120, perKg: 80 }, byAir: { base: 180, perKg: 180 } },
+      'North-East/J&K': { byRoad: { base: 160, perKg: 120 }, byAir: { base: 250, perKg: 250 } },
     };
 
     // constructor(private currencyPipe: CurrencyPipe) { } // Inject CurrencyPipe for price formatting
@@ -46,8 +46,8 @@ export class EstimationComponent implements OnInit{
 
       const weightInKg = this.weightUnit === 'g' ? this.packageWeight / 1000 : this.packageWeight;
 
-      this.estimatedPrice = weightInKg <= 0.5 ? priceDetails.base :
-        weightInKg > 0.5 && weightInKg < 1 ? priceDetails.perKg :
+      this.estimatedPrice = weightInKg <= 1.0 ? priceDetails.base :
+        weightInKg > 1.0 && weightInKg < 1 ? priceDetails.perKg :
           priceDetails.perKg * weightInKg;
     }
 
